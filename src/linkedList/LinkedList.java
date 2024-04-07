@@ -30,6 +30,19 @@ public class LinkedList {
         return first == null;
     }
 
+    public int indexOf(int item){
+        int index=0;
+        var current = first;
+        if(current != null){
+             if(current.value == item) return index;
+             else{
+                 current = current.next;
+                 index++;
+             }
+        }
+        return -1;
+    }
+
     private class Node {
 
         private final int value;
