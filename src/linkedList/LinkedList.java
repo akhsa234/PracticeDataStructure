@@ -98,20 +98,37 @@ public class LinkedList {
         if (isEmpty()) return;
         var previous = first;
         var current = first.next;
-
-        last = first;
-        last.next = null;
-
         while (current != null) {
             var next = current.next;
             current.next = previous;
             previous = current;
             current = next;
         }
+        last = first;
+        last.next = null;
         first = previous;
     }
 
+//    public Object[] toArray() {
+//    }
 
+    public int getKthFromEnd(int k) {
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        }
+        var a = first;
+        var b = first;
+
+        for (int i = 0; i < k - 1; i++) {
+            b = b.next;
+            if (b == null) throw new IllegalArgumentException();
+        }
+            while (b != last) {
+                a = a.next;
+                b = b.next;
+            }
+        return a.value;
+    }
 
     private class Node {
 
